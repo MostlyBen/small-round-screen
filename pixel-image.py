@@ -62,5 +62,6 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
         f.write(data)
 
 # write image to the framebuffer
-write_to_framebuffer()
+if __name__ == "__main__":
+    write_to_framebuffer()
 
