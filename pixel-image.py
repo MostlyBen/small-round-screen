@@ -3,7 +3,7 @@ import sys
 import os
 
 # Function to write text to framebuffer
-def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, resolution=32, padding_fill=2, file_path="./sad-pepe.png"):
+def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, resolution=32, padding_fill=0, file_path="./sad-pepe.png"):
     # get arguments 
     if "-gap" in sys.argv:
         gap = sys.argv[sys.argv.index("-gap") + 1]
