@@ -2,6 +2,8 @@
 
 I purchased a couple of small (maybe 1.3"), round screens on amazon.
 
+The screens are GC9A01-based LCD displays.
+
 I'm trying to get them to display content from the raspberry pi.
 
 # Pinout Config
