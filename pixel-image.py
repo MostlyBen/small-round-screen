@@ -3,7 +3,7 @@ import sys
 import os
 
 # Function to write text to framebuffer
-def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, resolution=32):
+def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, resolution=32, padding_fill=2, file_path="./sad-pepe.png"):
     # get arguments 
     if "-gap" in sys.argv:
         gap = sys.argv[sys.argv.index("-gap") + 1]
@@ -13,6 +13,8 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
             padding_fill = 255
         else:
             padding_fill = 0
+    if "-file" in sys.argv:
+        file_path = sys.argv[sys.argv.index("-file") + 1]
  
     # determine variables
     pixel_size = (width // resolution) - gap
@@ -20,7 +22,7 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
     padding = width - ((width // resolution) * resolution)
     padding = -(padding // -2) + 1
 
-    image = Image.open('./sad-pepe.png')
+    image = Image.open(file_path)
     image = image.convert('RGB')
 
     # initialize bytarray
