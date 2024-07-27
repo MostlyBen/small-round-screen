@@ -30,9 +30,11 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, pixel_si
             # data.append(value)
 
             r, g, b = image.getpixel((row, col))
+            # convert RGB888 to RGB565
             rgb565 = ((r & 0xf8) << 8) | ((g & 0xfc) << 3) | (b >> 3)
-            data.append((rgb565 >> 8) & 0xff)
-            data.append(rgb565 & 0xff)
+            # screen expects bytes in little-endian order (low byte first)
+            data.append(rgb565 & 0xff)        # low byte
+            data.append((rgb565 >> 8) & 0xff) # high byte
 
     with open(framebuffer, 'wb') as f:
         f.write(data)
