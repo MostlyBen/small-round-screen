@@ -1,10 +1,17 @@
 from PIL import Image
+from utils.extract_args import extract_args
 import sys
 import os
 
 # Function to write text to framebuffer
 def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, resolution=32, padding_fill=0, file_path="./sad-pepe.png"):
     # determine variables
+    if isinstance(padding_fill, str):
+        if padding_fill.lower() == 'white':
+            padding_fill = 255
+        else:
+            padding_fill = 0
+
     pixel_size = (width // resolution) - gap
 
     padding = width - ((width // resolution) * resolution)
@@ -52,17 +59,7 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
 # write image to the framebuffer
 if __name__ == "__main__":
     # get arguments 
-    args = {} 
-    if "-gap" in sys.argv:
-        gap = sys.argv[sys.argv.index("-gap") + 1]
-        args['gap'] = int(gap)
-    if "-padding_fill" in sys.argv:
-        if sys.argv[sys.argv.index("-padding_fill") + 1] == "white":
-            args['padding_fill'] = 255
-    if "-file" in sys.argv:
-        args['file_path'] = sys.argv[sys.argv.index("-file") + 1]
-    if "-framebuffer" in sys.argv:
-        args['framebuffer'] = sys.argv[sys.argv.index("-framebuffer") + 1]
-     
+    args = extract_args() 
+    print(args)
     write_to_framebuffer(**args)
 
