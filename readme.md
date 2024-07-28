@@ -18,4 +18,13 @@ I'm trying to get them to display content from the raspberry pi.
 | RST | 27           | 13           |
 | BL  | 18 (PCM_CLK) | 12           |
 
+# Linux Config
+There needs to be a `gc9a01.dtbo` file in the `/boot/overlays` folder to support the config.
+
+If it's missing, it can be downloaded directly [here](https://github.com/raspberrypi/firmware/raw/master/boot/overlays/gc9a01.dtbo)
+
+Then, to enable the device, edit `/boot/config.txt` and add the following to the end of the file:
+```
+dtoverlay=gc9a01
+```
 
