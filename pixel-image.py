@@ -60,6 +60,5 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
 if __name__ == "__main__":
     # get arguments 
     args = extract_args() 
-    print(args)
     write_to_framebuffer(**args)
 
