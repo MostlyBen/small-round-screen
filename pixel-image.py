@@ -25,7 +25,7 @@ def write_to_framebuffer(framebuffer='/dev/fb1', width=240, height=240, gap=2, r
 
     for x in range(width):
         for y in range(height):
-            
+
             # gap
             x_in_px_gap_sequence = (x - padding) % (pixel_size + gap)
             y_in_px_gap_sequence = (y - padding) % (pixel_size + gap)
